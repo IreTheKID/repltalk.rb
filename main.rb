@@ -4,6 +4,7 @@ require "httparty"
 
 def build_query(query:, name:, values:)
     q = "{#{query}(#{name}) {"
+
     values.each do |item|
         if item == values[-1]
             q += "#{item}"
@@ -44,6 +45,10 @@ class User
 
     def info
         return self.class.post("/graphql", @options)
+    end
+
+    def info_variant
+        return self.class.get("/graphql", @options)
     end
 end
 
