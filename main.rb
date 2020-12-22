@@ -19,13 +19,13 @@ end
 
 class User
     include HTTParty
-    base_uri 'repl.it'
+    base_uri 'https://repl.it'
 
     def initialize(name)
         q = {
-            :query => build_query(
+            query: build_query(
                 query: "userByUsername",
-                name: "username: '#{name}'",
+                name: "username: \"#{name}\"",
                 values: ["karma", "firstName", "lastName", "bio"]
             )
         }
@@ -40,7 +40,7 @@ class User
             'Origin': 'https://repl.it'
         }
 
-        @options = {body: q.to_json, headers: h}
+        @options = {body: q.to_json, headers: h, format: :text}
     end
 
     def info
@@ -55,3 +55,4 @@ end
 r = User.new("IreTheKID")
 
 puts r.info
+#puts r.info_variant
