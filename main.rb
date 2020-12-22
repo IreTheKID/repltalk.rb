@@ -26,7 +26,7 @@ class User
             :query => build_query(
                 query: "userByUsername",
                 name: "username: '#{name}'",
-                values: ["karma"]
+                values: ["karma", "firstName", "lastName", "bio"]
             )
         }
 
